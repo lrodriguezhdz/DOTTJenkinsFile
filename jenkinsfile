@@ -3,11 +3,33 @@ pipeline {
 		stages {
 			stage('Build') {
 				steps {
-					sh 'cd DOTT/cidr_convert_api/java/cidr-api'
-                    sh 'mvn clean install -e'
+					sh 'echo "Step One"'
+					script {
+							env.EXECUTE="True"
+						}
 
 				}
 			}
-	
+			stage('Second') {
+				 when {
+                         environment(name: "EXECUTE", value: "True")
+            			}
+
+
+				steps {
+					sh 'echo "Updating Second Stage"'
+					script {
+							sh'echo ${EXECUTE}'
+						}
+				}
+			} 
+			stage('Third') {
+				when {
+                     environment(name: "EXECUTE", value: "False")
+            		}
+				steps {
+					sh 'echo "Step Three"'
+				}
+			}
 		}
 }
