@@ -3,8 +3,8 @@ pipeline {
 		stages {
 			stage('Build') {
 				steps {
-					sh 'pwd'
-
+					sh 'cd /'
+					sh 'cd /usr/bin/DOTT/cidr_convert_api/java/cidr-api'
 				}
 			}
 			
