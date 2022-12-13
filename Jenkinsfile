@@ -4,7 +4,9 @@ pipeline {
 			stage('Build') {
 				steps {
 					sh 'cd /'
-					sh 'cd usr/bin/DOTT/cidr_convert_api/java/cidr-api'
+					sh 'pwd '
+					sh 'cd usr'
+					sh 'ls -la'
 				}
 			}
 			
